@@ -1,10 +1,11 @@
 const express = require('express');
+const axios = require('axios'); // Import axios
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 const CAT_FACTS_API = 'https://catfact.ninja/fact';
-const API_TIMEOUT = 5000; // 5-second timeout
+const API_TIMEOUT = 5000;
 
 const profileData = {
   email: 'olalekan.macaulay1@gmail.com',
@@ -18,21 +19,10 @@ app.get('/me', async (req, res) => {
 
     // Nested try-catch to gracefully handle external API failures
     try {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), API_TIMEOUT);
-
-      const response = await fetch(CAT_FACTS_API, {
-        signal: controller.signal
-      });
-
-      clearTimeout(timeoutId);
-
-      if (response.ok) {
-        const data = await response.json();
-        catFact = data.fact;
-      } else {
-        console.warn(`Cat Facts API responded with status: ${response.status}`);
-      }
+      // Use axios to fetch the cat fact with a timeout
+      const response = await axios.get(CAT_FACTS_API, { timeout: API_TIMEOUT });
+      catFact = response.data.fact;
+      
     } catch (error) {
       console.error('Error fetching cat fact:', error.message);
       catFact = 'Unable to fetch a fresh cat fact at this moment.';
@@ -58,6 +48,6 @@ app.get('/me', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
 
