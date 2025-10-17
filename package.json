@@ -9,8 +9,8 @@
   },
   "type": "commonjs",
   "dependencies": {
-    "express": "^4.19.2",
-    "axios": "^1.7.2"
+    "axios": "^1.12.2",
+    "express": "^5.1.0"
   },
   "author": "Macaulay Olalekan Michael",
   "license": "ISC"
