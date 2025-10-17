@@ -1,7 +1,7 @@
 const express = require('express');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 25099;
 
 const CAT_FACTS_API = 'https://catfact.ninja/fact';
 const API_TIMEOUT = 5000; // 5-second timeout
