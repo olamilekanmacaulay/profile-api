@@ -26,13 +26,13 @@ To run this project locally, follow these steps:
 cd hng-stage0-api
 
  * Install dependencies:
-   This project uses express. Install them using npm:
+   This project uses express and axios. Install them using npm:
    npm install
 
  * Run the server:
    node server.js
 
-   The server will start on https://olalekanm-hng0.pxxl.click.
+   The server is deployed on https://olalekanm-hng0.fly.dev/me.
 Environment Variables
 None used.
 
